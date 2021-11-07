@@ -17,19 +17,23 @@ Product.init(
           allowNull: false
         },
         price: {
-            type: DataTypes.FLOAT,
-            allowNull: false
+            type: DataTypes.DECIMAL,
+            allowNull: false,
+            validate: {
+              isDecimal:true,
+            }
         },
         stock: {
             type:DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            validate: {
+              isNumeric: true,
+
+            },
         },
         category_id: {
             type: DataTypes.INTEGER,
-            references: {
-                model: 'category',
-                key: ""
-            },
+            allowNull: false,
         },
 
       },
@@ -41,4 +45,6 @@ Product.init(
         modelName: 'product'
       }
     );
-    
+  
+
+module.exports = Product;
